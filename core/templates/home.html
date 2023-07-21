@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Home{% endblock %}
+
+{% block content %}
+	{% if status == '0' %}
+		<div class="alert alert-success m-2 h1-create">
+			Login efectuado com sucesso
+		</div>
+	{% endif %}
+	<section class="container">
+		<div class="container-fluid box">
+			<a href="{% url 'adicionar_pedido' %}" class="btn btn-secondary">+Adicionar pedidos</a>
+			<a href="{% url 'pedidos' %}" class="btn btn-primary">Pedidos</a>
+			<a href="#" class="btn btn-success">Gerar PDF de pedidos</a>
+			<a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+		</div>
+	</section>
+{% endblock %}

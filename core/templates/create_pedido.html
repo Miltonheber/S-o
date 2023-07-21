@@ -1,0 +1,18 @@
+{% extends 'base.html'  %}
+{% load crispy_forms_tags %}
+
+{% block titulo %}
+Adicionar Pedido
+{% endblock %}
+
+{% block content %}
+	<div class="container box-create">
+		{% if status == '0' %}<div class="alert alert-success h1-create">Pedido Adicionado :)</div>{% endif %}
+		<h1 class="h1-create">Adicionar Pedido</h1>
+		<form class="form" method="POST">
+			{% csrf_token %}
+			{{form|crispy}}
+			<button class="btn btn-primary" type="submit">Adicionar</button>
+		</form>
+	</div>
+{% endblock %}

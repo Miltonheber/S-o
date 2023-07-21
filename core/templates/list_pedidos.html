@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Pedidos{% endblock %}
+
+{% block content %}
+	<section class="box-pendentes">
+		{% if status == '0' %}<div class="alert alert-success h1-create">Pedido actualizado com sucesso!</div>{% endif %}
+		{% if status == '1' %}<div class="alert alert-success h1-create">Pedido eliminado com sucesso!</div>{% endif %}
+	<h1 class="h1-create">Pedidos</h1>
+	<div class="table-responsive-xs table-responsive-sm table-responsive-md">
+		<table class="table table-bordered  table-light">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Nome</th>
+					<th scope="col">Publicação</th>
+					<th scope="col">Língua</th>
+					<th scope="col">Quantidade</th>
+					<th scope="col">Estado</th>
+					<th scope="col">Data_Pedido</th>
+					<th scope="col">Responsável</th>
+					<th scope="col">Acções</th>
+
+				</tr>
+			</thead>
+			{% if pedidos %}
+			<tbody>
+				{% for pedido in pedidos %}
+					<tr>
+						<td>{{pedido.nome_pessoa}}</td>
+						<td>{{pedido.publicacao}}</td>
+						<td>{{pedido.lingua}}</td>
+						<td>{{pedido.quantidade}}</td>
+						{% if pedido.estado == 'recebido' %}
+							<td id="td-recebido">{{pedido.estado|title}}</td> 
+						{% else %} 
+							<td id="td-pendente">{{pedido.estado|title}}</td>
+						{% endif %}
+						<td>{{pedido.data}}</td>
+						<td>{{pedido.responsavel}}</td>
+						<td><i src=""><i src=""></td>
+
+					</tr>
+				{% endfor %}
+			</tbody>
+			{% else %}
+				<h1 class="h1-create">Sem pedidos, por favor adicione!</h1>
+			{% endif %}
+		</table>
+	</div>
+	</section>
+{% endblock %}
+

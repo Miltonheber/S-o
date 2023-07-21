@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block titulo %}Login{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="container-fluid">
+		{% if status == '0' %}<div class="alert alert-danger m-2 h1-create">Insira dados válidos ou contacte o Admin.</div>{% endif %}
+		{% if status == '1' %}<div class="alert alert-danger m-2 h1-create">O número de celular deve possuir 9 caracteres :), try again!</div>{% endif %}
+		{% if status == '2' %}<div class="alert alert-success m-2 h1-create">Logout efectuado com sucesso.</div>{% endif %}
+		{% if status == '3' %}<div class="alert alert-warning m-2 h1-create">Voce já está desconectado :), por favor inicie a sessão!</div>{% endif %}
+		{% if status == '4' %}<div class="alert alert-danger m-3 h1-create">Faça Login!</div>{% endif %}
+		</div>
+		<div class="container">
+		<div class="container-login">
+		<form method="POST" action="{% url 'valida_login' %}" class="m-4">{% csrf_token %}                       <div class="form-group">                            <label for="exampleInputText1">Número de Celular</label><input type="text" class="form-control" id="exampleInputText" aria-describedby="emailHelp" placeholder="Digite seu Número" name="numero">          </div>
+  <div class="form-group">                            <label for="exampleInputPassword1">Senha</l
+abel>                                                 <input type="password" class="form-control" id
+="exampleInputPassword1" placeholder="Digite sua s
+enha" name="senha">
+  </div>
+  <div class="separador" style="display:flex; colu
+mn-gap:6%">
+
+  <button type="submit" class="btn btn-primary m-2" style="background-color:#1693A5; border: solid 1px #1593A5;">Entrar</button>
+
+  </div>
+  </div>
+  </div>
+</form>
+</div>
+{% endblock %}
